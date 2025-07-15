@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>초등학교 선생님을 위한 AI 교육 도구, 브리스크 티칭 (Brisk Teaching)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* 스크롤바 디자인 (선택 사항) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #0d9488;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #0f766e;
+        }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              teal: {
+                50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4', 300: '#5eead4', 400: '#2dd4bf', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e', 800: '#115e59', 900: '#134e4a', 950: '#042f2e',
+              },
+              sky: {
+                50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc', 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e', 950: '#082f49',
+              },
+              orange: {
+                50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 300: '#fdba74', 400: '#fb923c', 500: '#f97316', 600: '#ea580c', 700: '#c2410c', 800: '#9a3412', 900: '#7c2d12', 950: '#431407',
+              },
+              navy: '#0c4a6e', // 기본 군청색
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-sky-50 text-slate-800">
+
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center">
+                    <a href="#top" class="flex-shrink-0 flex items-center gap-2">
+                        <span class="text-2xl">🤖</span>
+                        <span class="text-xl font-bold text-navy">브리스크 티칭 가이드</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#intro" class="text-gray-700 hover:bg-teal-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">👋 소개</a>
+                        <a href="#setup" class="text-gray-700 hover:bg-teal-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">🛠️ 설치</a>
+                        <a href="#quiz" class="text-gray-700 hover:bg-teal-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">✨ 퀴즈 만들기</a>
+                        <a href="#features" class="text-gray-700 hover:bg-teal-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">🚀 추가 기능</a>
+                        <a href="#application" class="text-gray-700 hover:bg-teal-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium">🏫 활용 방안</a>
+                    </div>
+                </div>
+                 <div class="md:hidden">
+                    <select onchange="window.location.href=this.value" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5">
+                        <option>메뉴 이동</option>
+                        <option value="#intro">👋 소개</option>
+                        <option value="#setup">🛠️ 설치</option>
+                        <option value="#quiz">✨ 퀴즈 만들기</option>
+                        <option value="#features">🚀 추가 기능</option>
+                        <option value="#application">🏫 활용 방안</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="top" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-navy mb-4 leading-tight">초등학교 선생님을 위한 AI 교육 도구<br><span class="text-teal-600">브리스크 티칭 (Brisk Teaching)</span> 소개</h1>
+            <p class="text-xl text-slate-600 font-semibold">스마트한 수업 준비와 피드백의 시작!</p>
+            <p class="mt-4 max-w-3xl mx-auto text-slate-500">
+                이 연수 자료는 바쁜 초등학교 선생님들의 수업 준비와 학생 관리에 도움을 드릴 '브리스크 티칭'이라는 AI 기반 도구를 소개합니다.
+            </p>
+        </header>
+
+        <section id="intro" class="mb-20">
+            <h2 class="text-3xl font-bold text-navy mb-8 flex items-center gap-3">💡 브리스크 티칭(Brisk Teaching)이란?</h2>
+            <div class="bg-white p-8 rounded-xl shadow-lg grid md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-4">
+                    <p class="text-lg text-slate-700">
+                        브리스크 티칭은 선생님의 '든든한 AI 보조 교사'입니다. 복잡하고 반복적인 업무는 AI에게 맡기고, 선생님은 아이들과의 소통이라는 교육의 본질에 더 집중할 수 있도록 돕습니다.
+                    </p>
+                     <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-teal-500 text-2xl mr-3">✅</span>
+                            <span><strong class="font-semibold text-teal-700">AI 기반 크롬 확장 프로그램</strong>으로, 구글 크롬 브라우저에서 간편하게 사용할 수 있습니다.</span>
+                        </li>
+                        <li class="flex items-start">
+                           <span class="text-teal-500 text-2xl mr-3">✅</span>
+                            <span>수업 자료 제작, 학생 피드백, 평가 등 <strong class="font-semibold text-teal-700">교육 활동을 자동화</strong>하여 선생님들의 시간을 절약해 줍니다.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-teal-500 text-2xl mr-3">✅</span>
+                            <span>궁극적으로 선생님들이 <strong class="font-semibold text-teal-700">학생들에게 더 집중할 수 있도록 돕는</strong> 매우 유용한 도구입니다.</span>
+                        </li>
+                    </ul>
+                </div>
+                 <div class="bg-teal-50 p-6 rounded-lg">
+                    <img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/brisk-blog-7.width-1200.height-630.mode-crop.format-png.png" alt="Brisk Teaching in action" class="rounded-md shadow-md mx-auto">
+                 </div>
+            </div>
+             <div class="mt-12">
+                <h3 class="text-2xl font-bold text-navy mb-6 flex items-center gap-3">🤔 왜 초등학교 선생님께 필요할까요?</h3>
+                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-orange-50 border-l-4 border-orange-400 p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-orange-800 text-lg mb-2">수업 자료 제작 시간 단축</h4>
+                        <p class="text-orange-700">퀴즈, 학습 자료 등을 AI가 순식간에 만들어 줍니다.</p>
+                    </div>
+                     <div class="bg-sky-50 border-l-4 border-sky-400 p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-sky-800 text-lg mb-2">개별화된 피드백</h4>
+                        <p class="text-sky-700">학생 과제에 대한 맞춤형 피드백을 쉽게 제공합니다.</p>
+                    </div>
+                    <div class="bg-teal-50 border-l-4 border-teal-400 p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-teal-800 text-lg mb-2">평가 효율성 증대</h4>
+                        <p class="text-teal-700">퀴즈 출제부터 채점 준비까지 한 번에 가능합니다.</p>
+                    </div>
+                     <div class="bg-slate-100 border-l-4 border-slate-400 p-6 rounded-lg shadow-sm">
+                        <h4 class="font-bold text-slate-800 text-lg mb-2">다양한 학습 자료 활용</h4>
+                        <p class="text-slate-700">유튜브, PDF 등 다양한 자료로 퀴즈를 만듭니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="setup" class="mb-20">
+            <h2 class="text-3xl font-bold text-navy mb-8 flex items-center gap-3">🛠️ 설치하고 시작하기</h2>
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div>
+                        <h3 class="text-2xl font-bold text-teal-700 mb-4">1. 브리스크 티칭 설치하기</h3>
+                        <ol class="list-decimal list-inside space-y-4 text-slate-700">
+                            <li>
+                                <strong class="font-semibold">크롬 웹 스토어 접속:</strong>
+                                <p class="pl-4 text-sm text-slate-600">구글 크롬 브라우저를 열고 '크롬 웹 스토어'로 이동 후, 'Brisk Teaching'을 검색하세요.</p>
+                            </li>
+                            <li>
+                                <strong class="font-semibold">크롬에 추가:</strong>
+                                <p class="pl-4 text-sm text-slate-600">'Brisk Teaching'을 찾아 'Chrome에 추가' 버튼을 누르고, 팝업창에서 '확장 프로그램 추가'를 클릭하세요.</p>
+                            </li>
+                             <li>
+                                <strong class="font-semibold">아이콘 고정:</strong>
+                                <p class="pl-4 text-sm text-slate-600">브라우저 우측 상단 퍼즐 모양 아이콘(🧩)을 눌러 'Brisk Teaching' 옆의 핀(📌)을 클릭해 고정하세요.</p>
+                            </li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-teal-700 mb-4">2. 브리스크 티칭 가입하기</h3>
+                        <div class="bg-sky-50 p-6 rounded-lg border border-sky-200">
+                             <p class="text-slate-700">
+                                고정된 브리스크 티칭 아이콘을 클릭하면 가입 화면이 나타납니다.
+                            </p>
+                            <div class="mt-4 bg-white p-4 rounded-md text-center shadow-sm">
+                                <span class="text-lg font-bold text-sky-800">'Google로 가입'</span>을 선택하여 간편하게 가입하세요!
+                            </div>
+                            <p class="mt-3 text-sm text-slate-500">
+                                가입이 완료되면 모든 기능을 바로 사용할 수 있습니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="quiz" class="mb-20">
+            <h2 class="text-3xl font-bold text-navy mb-2 flex items-center gap-3">✨ 핵심 기능: 퀴즈 만들기</h2>
+            <p class="text-slate-600 mb-8">유튜브 영상, PDF, 웹페이지 등 어떤 콘텐츠든 몇 번의 클릭만으로 멋진 퀴즈로 만들 수 있습니다.</p>
+
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-bold text-teal-700 mb-6">📝 인포그래픽으로 보는 퀴즈 제작 과정 (유튜브 영상 활용)</h3>
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute left-4 md:left-6 top-1 bottom-1 w-1 bg-teal-200"></div>
+                    
+                    <div class="relative mb-8">
+                        <div class="absolute -left-[1.8rem] md:-left-[2.5rem] mt-1.5 w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold">1</div>
+                        <h4 class="text-xl font-bold text-navy mb-2">유튜브 영상 선택 & 아이콘 클릭</h4>
+                        <p class="text-slate-600">학생들에게 보여줄 유튜브 영상 페이지를 열고, 브라우저의 브리스크 티칭 아이콘을 클릭합니다.</p>
+                    </div>
+
+                    <div class="relative mb-8">
+                        <div class="absolute -left-[1.8rem] md:-left-[2.5rem] mt-1.5 w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold">2</div>
+                        <h4 class="text-xl font-bold text-navy mb-2">'Create' → 'Quiz' 선택</h4>
+                        <p class="text-slate-600">나타나는 메뉴에서 <code class="bg-slate-200 text-sm px-2 py-1 rounded">Create</code> 버튼을 누른 후, <code class="bg-slate-200 text-sm px-2 py-1 rounded">Quiz</code>를 선택합니다.</p>
+                    </div>
+
+                    <div class="relative mb-8">
+                        <div class="absolute -left-[1.8rem] md:-left-[2.5rem] mt-1.5 w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold">3</div>
+                        <h4 class="text-xl font-bold text-navy mb-2">퀴즈 상세 설정</h4>
+                        <ul class="list-disc list-inside space-y-2 mt-2 text-slate-600">
+                            <li><strong class="font-semibold text-slate-700">언어:</strong> '한국어'로 설정합니다.</li>
+                            <li><strong class="font-semibold text-slate-700">난이도(Grade):</strong> 학생 수준에 맞춰 '초등 5학년' 등으로 선택합니다.</li>
+                            <li><strong class="font-semibold text-slate-700">문제 유형:</strong> '객관식', '단답형' 등 원하는 유형을 선택합니다.</li>
+                            <li><strong class="font-semibold text-slate-700">문제 개수:</strong> 만들고 싶은 문제 수를 입력합니다. (예: 10개)</li>
+                        </ul>
+                    </div>
+
+                    <div class="relative">
+                        <div class="absolute -left-[1.8rem] md:-left-[2.5rem] mt-1.5 w-8 h-8 bg-teal-500 text-white rounded-full flex items-center justify-center font-bold">4</div>
+                        <h4 class="text-xl font-bold text-navy mb-2">출력 형식 선택 후 'Brisk it' 클릭!</h4>
+                        <p class="text-slate-600 mb-4">퀴즈를 어떤 파일로 받을지 선택하세요.</p>
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <div class="flex-1 bg-sky-50 p-4 rounded-lg border border-sky-200">
+                                <h5 class="font-bold text-sky-800">📄 New Doc (구글 문서)</h5>
+                                <p class="text-sm text-sky-700">인쇄하거나 바로 수정하기 좋은 문서 형식으로 퀴즈를 만듭니다. 정답과 해설이 포함됩니다.</p>
+                            </div>
+                            <div class="flex-1 bg-orange-50 p-4 rounded-lg border border-orange-200">
+                                <h5 class="font-bold text-orange-800">📝 New Form (구글 설문지)</h5>
+                                <p class="text-sm text-orange-700">온라인으로 퀴즈를 배포하고 자동으로 채점하고 싶을 때 사용합니다.</p>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-center"><button class="bg-teal-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-teal-700 transition-colors">Brisk it</button> 버튼을 누르면 퀴즈 생성이 시작됩니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                     <h3 class="text-2xl font-bold text-sky-800 mb-4">📄 구글 문서 퀴즈 활용법</h3>
+                     <ul class="space-y-4">
+                        <li class="flex items-start gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center font-bold">1</div>
+                            <div><strong class="font-semibold">정답 & 해설 확인:</strong> 문서 하단 'Answer Key'를 클릭하면 정답과 상세한 해설이 나타나 편리하게 검토할 수 있습니다.</div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                             <div class="flex-shrink-0 w-8 h-8 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center font-bold">2</div>
+                            <div><strong class="font-semibold">번역 기능 활용:</strong> '번역' 버튼으로 퀴즈 전체를 다른 언어로 번역할 수 있어 다문화 학생 교육이나 외국어 수업에 유용합니다.</div>
+                        </li>
+                     </ul>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-orange-800 mb-4">📝 구글 설문지 퀴즈 활용법</h3>
+                     <ul class="space-y-4">
+                        <li class="flex items-start gap-4">
+                             <div class="flex-shrink-0 w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold">1</div>
+                            <div><strong class="font-semibold">자동 채점 설정:</strong> 정답과 점수가 자동으로 설정됩니다. 필요 시 문제 카드를 클릭하여 점수를 수정할 수 있습니다.</div>
+                        </li>
+                         <li class="flex items-start gap-4">
+                             <div class="flex-shrink-0 w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center font-bold">2</div>
+                            <div><strong class="font-semibold">학생 미리보기:</strong> 상단의 눈(👁️) 모양 '미리보기' 아이콘을 눌러 학생 화면을 미리 확인해 볼 수 있습니다.</div>
+                        </li>
+                     </ul>
+                </div>
+            </div>
+
+            <div id="settings-toggle" class="mt-12">
+                <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-r-lg" role="alert">
+                    <div class="flex justify-between items-center cursor-pointer" onclick="toggleSettings()">
+                        <div>
+                            <p class="font-bold text-xl">🚨 구글 설문지 공유 전 필수 체크리스트!</p>
+                            <p>이 설정을 확인하지 않으면 학생들이 퀴즈에 참여하지 못할 수 있어요!</p>
+                        </div>
+                         <span id="toggle-icon" class="text-2xl">🔽</span>
+                    </div>
+                    <div id="settings-content" class="hidden mt-4 pt-4 border-t border-red-300">
+                        <p class="font-bold mb-2">설문지 상단 '설정' 탭에서 아래 항목을 꼭 확인하세요:</p>
+                        <ul class="list-disc list-inside space-y-2">
+                           <li><strong class="font-semibold text-red-800">'이메일 주소 수집':</strong> '응답자 입력'으로 설정</li>
+                           <li><strong class="font-semibold text-red-800">'응답 사본 전송':</strong> '항상'으로 설정 (학생 확인용)</li>
+                           <li class="font-bold text-red-900 bg-red-200 p-2 rounded-md"><strong class="font-extrabold">'하위 조직 사용자로 제한':</strong> 🚫 반드시 해제해야 외부에서도 참여 가능!</li>
+                           <li><strong class="font-semibold text-red-800">'응답 횟수 1회로 제한':</strong> 필요에 따라 설정</li>
+                        </ul>
+                         <p class="mt-4">설정 완료 후, <code class="bg-slate-200 text-sm px-2 py-1 rounded">'보내기' &gt; 링크(🔗) &gt; 'URL 단축'</code>을 통해 링크를 복사하여 학생들에게 배포하세요.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="mb-20">
+            <h2 class="text-3xl font-bold text-navy mb-8 flex items-center gap-3">🚀 브리스크 티칭 더 활용하기</h2>
+             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <h3 class="text-xl font-bold text-teal-700 mb-2">👨‍🏫 학생 과제 피드백</h3>
+                    <p class="text-slate-600">학생이 제출한 구글 문서 과제에서 'Give Feedback'을 클릭하세요. AI가 과제의 좋은 점과 개선점을 담은 맞춤형 피드백을 자동으로 생성해 줍니다.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <h3 class="text-xl font-bold text-teal-700 mb-2">✍️ 콘텐츠 생성 및 질문</h3>
+                    <p class="text-slate-600">빈 구글 문서에서 'Ask' 기능을 사용해 보세요. "인도에 대해 설명해 줘"와 같이 질문을 입력하면 AI가 관련 내용을 바로 작성해 줍니다.</p>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <h3 class="text-xl font-bold text-teal-700 mb-2">📚 기타 유용한 기능</h3>
+                    <p class="text-slate-600">PDF 파일을 기반으로 퀴즈를 만들거나, 수업의 목표와 활동을 담은 강의 계획(Lesson Plan)도 손쉽게 작성할 수 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="application" class="mb-12">
+            <h2 class="text-3xl font-bold text-navy mb-8 flex items-center gap-3">🏫 브리스크 티칭, 초등 교육 활용 방안</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <p class="text-4xl mb-3">🎬</p>
+                    <h3 class="font-bold text-lg text-navy mb-2">흥미로운 수업 자료</h3>
+                    <p class="text-sm text-slate-600">유튜브 영상 퀴즈로 몰입도 높은 시청각 수업을 진행해요.</p>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <p class="text-4xl mb-3">🎯</p>
+                    <h3 class="font-bold text-lg text-navy mb-2">개별 학습 지원</h3>
+                    <p class="text-sm text-slate-600">학생 수준별 퀴즈와 맞춤형 피드백을 제공해요.</p>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <p class="text-4xl mb-3">⏰</p>
+                    <h3 class="font-bold text-lg text-navy mb-2">교사 업무 효율 증대</h3>
+                    <p class="text-sm text-slate-600">자료 제작 시간을 아껴 교육 본질에 집중해요.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <p class="text-4xl mb-3">🌐</p>
+                    <h3 class="font-bold text-lg text-navy mb-2">디지털 리터러시 경험</h3>
+                    <p class="text-sm text-slate-600">클라우드 도구 활용 능력을 자연스럽게 키워요.</p>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-gradient-to-r from-teal-500 to-sky-600 text-white p-10 rounded-xl shadow-2xl text-center">
+                <h2 class="text-3xl font-extrabold mb-4">🎉 브리스크 티칭과 함께 스마트한 교육을 시작하세요!</h2>
+                <p class="text-lg opacity-90 max-w-3xl mx-auto">
+                    브리스크 티칭은 선생님의 시간과 노력을 줄여주고, 학생들이 더욱 즐겁게 학습하도록 돕는 강력한 AI 도구입니다. 오늘 배운 내용을 바탕으로 교실에서 적극적으로 활용하여 더 풍요로운 초등 교육을 만들어나가시길 바랍니다.
+                </p>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-navy text-white text-center p-4">
+        <p>© 2025 웹페이지 전문가. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // 토글 기능 자바스크립트
+        function toggleSettings() {
+            const content = document.getElementById('settings-content');
+            const icon = document.getElementById('toggle-icon');
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.textContent = '🔼';
+            } else {
+                content.classList.add('hidden');
+                icon.textContent = '🔽';
+            }
+        }
+    </script>
+</body>
+</html>
